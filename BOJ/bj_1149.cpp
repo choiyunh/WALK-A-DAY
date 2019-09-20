@@ -29,8 +29,7 @@ int main() {
 		min[i] = dp(N - 1, i);
 	}
 
-	int ans = min[0];
-	if (min[1] < min[0]) ans = min[1];
+	int ans = std::min(min[0], min[1]);
 	if (min[2] < ans) ans = min[2];
 
 	printf("%d\n", ans);
