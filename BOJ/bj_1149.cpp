@@ -30,8 +30,8 @@ int main() {
 	}
 
 	int ans = std::min(min[0], min[1]);
-	if (min[2] < ans) ans = min[2];
-
+	ans = std::min(ans, min[2]);
+	
 	printf("%d\n", ans);
 	   
 	return 0;
