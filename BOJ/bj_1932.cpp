@@ -21,5 +21,6 @@ int main() {
 	}
 
 	printf("%d\n", dp(n-1,0));
+
 	return 0;
 }
