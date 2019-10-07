@@ -7,8 +7,6 @@ int w[101];
 int v[101];
 
 int main() {
-
-
 	std::cin >> n >> k;
 
 	for (int i = 1; i <= n; i++) {
