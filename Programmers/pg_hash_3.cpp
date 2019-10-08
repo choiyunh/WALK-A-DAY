@@ -13,7 +13,12 @@ int solution(vector<vector<string>> clothes) {
 		um[clothes[i][1]]++;
 	}
 
-	answer = um[clothes[1][1]];
+	unordered_map<string, int>::iterator it = um.begin();
+	answer = it++->second + 1;
+	for (it; it != um.end(); it++) {
+		answer *= it->second + 1;
+	}
+	answer -= 1;
 	return answer;
 }
 
