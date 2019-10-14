@@ -23,9 +23,11 @@ vector<int> solution(vector<int> progresses, vector<int> speeds) {
 		else {
 			answer.push_back(release);
 			release = 1;
+			day = term[i];
 		}
 	}
 	answer.push_back(release);
+	
 	return answer;
 }
 
