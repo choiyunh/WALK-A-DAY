@@ -6,23 +6,34 @@ using namespace std;
 
 int solution(vector<int> priorities, int location) {
 	int answer = 0;
-	queue<int> q;
+	queue<pair<int, int>> q;
+	priority_queue<int> pq;
+
 	int cnt = 0;
 
-	for (int i = 0; i < priorities.size(); i++)
-		q.push(priorities[i]);
-
-	int i = 1;
-	for (i = 1; i < priorities.size();i++) {
-		if (q.front() < priorities[i]) {
-			int temp = q.front();
+	for (int i = 0; i < priorities.size(); i++) {
+		q.push(pair<int, int>(i, priorities[i]));
+		pq.push(priorities[i]);
+	}
+	
+	int count = 0;
+	while (1) {
+		if (q.front().second == pq.top()) { // ¿Œº‚
+			if (q.front().first == location) {
+				count++;
+				break;
+			}
 			q.pop();
-			q.push(temp);
-			i = 1;
+			pq.pop();
+			count++;
+		}
+		else {
+			q.push(q.front());
+			q.pop();
 		}
 	}
-	if (i == 4)
-		q.pop();
+	answer = count;
+
 	return answer;
 }
 
@@ -30,9 +41,9 @@ int main() {
 	vector<int> p = { 2,1,3,2 };
 	int loc = 2;
 
-	queue<int> pq;
-	
 	int ans = solution(p, loc);
-	printf("%d\n", pq.back());
+
+	printf("%d\n", ans);
+
 	return 0;
 }
