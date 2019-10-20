@@ -12,17 +12,14 @@ int solution(int bridge_length, int weight, vector<int> truck_weights) {
 	int i = 0;
 		
 	while (1) {
-		answer++;
 		if (onBridge.size() == bridge_length) {
 			if (curWeight == 0) {
-				answer--;
 				break;
-			}
-			
+			}			
 			curWeight -= onBridge.front();
 			onBridge.pop();
 		}
-
+		answer++;
 		if (i < truck_weights.size()) {
 			curWeight += truck_weights[i];
 			if (curWeight <= weight) {
