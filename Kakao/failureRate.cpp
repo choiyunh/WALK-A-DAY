@@ -18,14 +18,19 @@ vector<int> solution(int N, vector<int> stages) {
 	vector<pair<double, int>> fR;
 	
 	for (int i = 1; i <= N; i++) {
-		int son = 0, parents = 0;
+		int son = 0, parents = 0, cnt = 0;
 		for (int t : stages) {
 			if (t >= i)
 				parents++;
+			else
+				cnt++;
 			if (t == i)
 				son++;
 		}
-		fR.push_back(pair<double, int>(son / (double)parents, i));
+		if (cnt == stages.size())
+			fR.push_back(pair<double, int>(0, i));
+		else
+			fR.push_back(pair<double, int>(son / (double)parents, i));
 	}
 	sort(fR.begin(), fR.end(), cmp);
 
