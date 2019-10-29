@@ -2,57 +2,65 @@
 #include <vector>
 #include <iostream>
 #include <queue>
-#include <functional>
 #include <algorithm>
+
 using namespace std;
 
-struct Pred {
+
+bool compare(vector<int> a, vector<int> b) {
+	return a[0] < b[0];
+}
+
+struct cmp {
 	bool operator()(vector<int> a, vector<int> b) {
 		return a[1] > b[1];
 	}
 };
 
-bool Pred1(vector<int> a, vector<int> b) {
-	return a[0] < b[0];
+int solution(vector<vector<int>> jobs) {
+	priority_queue<int, vector<vector<int>>, cmp> pq; // 소요시간 오름차순
+	sort(jobs.begin(), jobs.end(), compare);  // jobs 요청시점 오름차순
+	int answer = 0;
+	int time = 0;
+	vector<int> working;
+	int total = 0;
+
+	for (int i = 0; i < jobs.size(); i++)
+		pq.push(jobs[i]);
+
+	while (!pq.empty()) {
+		working = pq.top();
+
+		while (1) {
+			if (working[1] == time) {
+				if (total - working[0] < 0) {
+					total -= time;
+					time = 0;
+					vector<int> temp = working;
+					pq.pop();
+					working = pq.top();
+					pq.push(temp);
+				}
+				else {
+					answer += (total - working[0]);
+					pq.pop();
+					time = 0;
+					break;
+				}
+			}
+			time++;
+			total++;
+		}		
+	}
+	answer /= jobs.size();
+	return answer;
 }
 
+int main() {
+	//vector<vector<int>> jobs = { {0,9},{0,4},{0,5},{ 0,7 },{ 0,3 } };
+	vector<vector<int>> jobs = { {0,3},{1,9},{500,6} };
+	vector<int> a;
 
-int solution(vector<vector<int>> jobs) {
-	priority_queue<int, vector<vector<int>>, Pred> temp;
-	sort(jobs.begin(), jobs.end(), Pred1);
-	vector<int> temp1;
-	int answer = 0;
-	int total = 0;
-	int work = 0;			//현재 수행한 작업
-	int need_work = 0;		//해야할 작업
-	int i = 0;
-	while (1) {
-		while (i != jobs.size()) {
-			if (jobs[i][0] == work)
-			{
-				temp.push(jobs[i]);
-				i++;
-			}
-			else break;
-		}
-
-		if (need_work <= 0 && !temp.empty())
-		{
-			temp1 = temp.top();
-			temp.pop();
-			need_work = temp1[1];
-			total += temp1[1];
-		}
-
-		total += temp.size();
-		need_work--;
-		work++;
-
-
-		if (temp.empty() && need_work == 0 && i == jobs.size()) {
-			break;
-		}
-	}
-	answer = total / jobs.size();
-	return answer;
+	printf("%d\n", solution(jobs));
+	return 0;
 }
