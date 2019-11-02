@@ -1,0 +1,37 @@
+#include <string>
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
+bool check(const string& a, const string& b){
+	return a + b > b + a ? true : false;
+}
+
+string solution(vector<int> numbers) {
+	string answer = "";
+
+	vector<string> vs;
+
+	for (int i = 0; i < (int)numbers.size(); i++) {
+		vs.push_back(to_string(numbers[i]));
+	}
+
+
+	sort(vs.begin(), vs.end(), check);
+
+	for (int i = 0; i < vs.size() ; i++) {
+		answer += vs[i];
+	}
+
+	return answer;
+}
+
+int main() {
+
+	vector<int> v = { 3, 30, 34, 5, 9 };
+
+	solution(v);
+
+	return 0;
+}
