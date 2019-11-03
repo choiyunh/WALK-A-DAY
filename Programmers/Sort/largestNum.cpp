@@ -4,8 +4,9 @@
 
 using namespace std;
 
-bool check(const string& a, const string& b){
-	return a + b > b + a ? true : false;
+bool cmp(const string& a, const string& b){
+	if ((a + b) > (b + a)) return true;
+	else return false;
 }
 
 string solution(vector<int> numbers) {
@@ -13,12 +14,11 @@ string solution(vector<int> numbers) {
 
 	vector<string> vs;
 
-	for (int i = 0; i < (int)numbers.size(); i++) {
+	for (int i = 0; i < numbers.size(); i++) {
 		vs.push_back(to_string(numbers[i]));
 	}
 
-
-	sort(vs.begin(), vs.end(), check);
+	sort(vs.begin(), vs.end(), cmp);
 
 	for (int i = 0; i < vs.size() ; i++) {
 		answer += vs[i];
