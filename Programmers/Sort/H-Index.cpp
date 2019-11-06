@@ -1,34 +1,28 @@
 #include <string>
 #include <vector>
-#include <algorithm>
 #include <iostream>
-#include <functional>
+#include <algorithm>
 
 using namespace std;
 
 int solution(vector<int> citations) {
-
-	sort(citations.begin(), citations.end(), greater<int>());
 	int answer = 0;
-	int cnt = 0;
-	while (1) {
-	
+	sort(citations.begin(), citations.end());
+	int n = citations.size();
 
-		if (citations.size() - cnt <= answer) {
-			return answer;
-		}
-		else {
-			answer++;
-		}
+	for (int i = 0; i < citations.size(); i++) {
+		if (citations[i] <= n - i)
+			answer = citations[i];
 	}
 
+	if (answer == 0) {
+		answer = n;
+	}
 	return answer;
 }
 
 int main() {
-	vector<int> c = { 3,0,6,1,5 };
-
+	vector<int> c = { 42,7,5 };
 	printf("%d\n", solution(c));
-
 	return 0;
 }
