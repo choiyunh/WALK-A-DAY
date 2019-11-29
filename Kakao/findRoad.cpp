@@ -14,7 +14,6 @@ public:
 	Node(int value) { this->value = value; }
 };
 
-
 // y 내림차순 정렬
 bool compare(vector<int>& a, vector<int>& b) {
 	return a[1] == b[1] ? a[0] < b[0] : a[1] > b[1];
@@ -35,16 +34,18 @@ Node* makeBinaryTree(int maxX, int level) {
 	if (level == depth || yList[level + 1].empty())
 		return root;
 
-	// 왼쪽 노드
-	int nextX = -yList[level + 1].top().first;
-	if (nextX < x)
-		root->left = makeBinaryTree(x, level + 1);
-	if(yList[level + 1].empty())
-		return root;
+
 
 	// 오른쪽 노드
 	nextX = -yList[level + 1].top().first;
 	if (x < nextX && nextX < maxX)
 		root->right = makeBinaryTree(maxX, level + 1);
 	return root;
+
+	// 왼쪽 노드
+	int nextX = -yList[level + 1].top().first;
+	if (nextX < x)
+		root->left = makeBinaryTree(x, level + 1);
+	if (yList[level + 1].empty())
+		return root;
 }
