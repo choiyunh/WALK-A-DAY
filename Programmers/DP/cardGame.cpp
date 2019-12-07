@@ -1,43 +1,39 @@
 #include <string>
 #include <vector>
-#include <iostream>
 #include <queue>
 
 using namespace std;
 
+
 int solution(vector<int> left, vector<int> right) {
-	int answer = 0;
-	queue<int> leftQ;
-	queue<int> rightQ;
 
-	// ¸ğµç Ä«µå¸¦ Å¥¿¡ »ğÀÔ
-	for (int i = 0; i < left.size(); i++) {
-		leftQ.push(left[i]);
-		rightQ.push(right[i]);
-	}
+    queue<int> leftQ;
+    queue<int> rightQ;
 
-	int answer = 0;
-	// µÎ Å¥ Áß ÇÏ³ª¶óµµ ºô ¶§±îÁö ÁøÇà
-	while (!leftQ.empty() && !rightQ.empty()) {
+    // ëª¨ë“  ì¹´ë“œë¥¼ íì— ì‚½ì…
+    for(int i=0; i<left.size(); i++){
+        leftQ.push(left[i]);
+        rightQ.push(right[i]);
+    }
 
-		// ¿ŞÂÊ ¿À¸¥ÂÊ Ä«µå ºñ±³
-		int LTop = leftQ.front();
-		int RTop = rightQ.front();
+    int answer = 0;
+    // ë‘ í ì¤‘ í•˜ë‚˜ë¼ë„ ë¹Œ ë•Œê¹Œì§€ ì§„í–‰
+    while(!leftQ.empty() && !rightQ.empty()){
 
-		// ¿À¸¥ÂÊÀÌ ÀÛÀ¸¸é Á¡¼ö UP
-		if (RTop < LTop) {
-			answer += RTop;
-			rightQ.pop();
-		}
-		// ¿À¸¥ÂÊÀÌ Å©¸é ¿ŞÂÊÄ«µå ¹ö¸®±â
-		else {
-			leftQ.pop();
-		}
-	}
-	return answer;
-}
+        // ì™¼ìª½ ì˜¤ë¥¸ìª½ ì¹´ë“œ ë¹„êµ
+        int LTop = leftQ.front();
+        int RTop = rightQ.front();
 
-int main() {
+        // ì˜¤ë¥¸ìª½ì´ ì‘ìœ¼ë©´ ì ìˆ˜ UP
+        if(RTop < LTop){
+            answer += RTop;
+            rightQ.pop();
+        }
+        // ì˜¤ë¥¸ìª½ì´ í¬ë©´ ì™¼ìª½ì¹´ë“œ ë²„ë¦¬ê¸°
+        else {
+            leftQ.pop();
+        }
+    }
 
-	return 0;
+    return answer;
 }
