@@ -14,10 +14,12 @@ int solution(vector<vector<string>> clothes) {
 	}
 
 	unordered_map<string, int>::iterator it = um.begin();
+	// 경우의 수 계산 시 각 종류별 개수 +1(안 입는 경우)
 	answer = it++->second + 1;
 	for (it; it != um.end(); it++) {
 		answer *= it->second + 1;
 	}
+	// 모든 종류 안입는 경우 제외 -1
 	answer -= 1;
 	return answer;
 }
