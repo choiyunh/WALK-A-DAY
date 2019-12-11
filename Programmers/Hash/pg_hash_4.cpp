@@ -9,9 +9,9 @@ unordered_map<string, vector<pair<int, int>>> um;
 
 bool compare(pair<int, int> a, pair<int, int> b){
 	if (a.first == b.first) 
-		return a.second < b.second; // Àç»ıÈ½¼ö°¡ °°À» ¶§´Â °íÀ¯¹øÈ£ ³·Àº¼ø	
+		return a.second < b.second; // ì¬ìƒíšŸìˆ˜ê°€ ê°™ì„ ë•ŒëŠ” ê³ ìœ ë²ˆí˜¸ ë‚®ì€ìˆœ	
 	else 
-		return a.first > b.first;  // Àç»ıÈ½¼ö ³»¸²Â÷¼ø	
+		return a.first > b.first;  // ì¬ìƒíšŸìˆ˜ ë‚´ë¦¼ì°¨ìˆœ	
 }
 
 bool cmp(pair<int, vector<int>> a, pair<int, vector<int>> b) {
@@ -26,20 +26,20 @@ vector<int> solution(vector<string> genres, vector<int> plays) {
 
 	unordered_map<string, vector<pair<int, int>>>::iterator it = um.begin();
 	vector<pair<int, vector<int>>> v(um.size()); 
-	// vector<pair<int, vector<int>>> v; º¤ÅÍÀÇ »çÀÌÁî ÁöÁ¤ ¸Å¿ì Áß ¿ä ÀÌ °Í ¶§ ¹® ¿¡ ·± Å¸ ÀÓ *****
+	// vector<pair<int, vector<int>>> v; ë²¡í„°ì˜ ì‚¬ì´ì¦ˆ ì§€ì • ë§¤ìš° ì¤‘ ìš” ì´ ê²ƒ ë•Œ ë¬¸ ì— ëŸ° íƒ€ ì„ *****
 	int i = 0;
 	for (it; it != um.end(); it++) {
 		vector<pair<int, int>> temp = it->second;
 		
 		sort(temp.begin(), temp.end(), compare);
 		for (int j = 0; j < temp.size(); j++) {
-			v[i].first += temp[j].first;
-			v[i].second.push_back(temp[j].second);
+			v[i].first += temp[j].first; // í•´ë‹¹ ì¥ë¥´ì˜ ì¬ìƒíšŸìˆ˜ ì´í•©
+			v[i].second.push_back(temp[j].second); // ì •ë ¬ëœ ê³ ìœ ë²ˆí˜¸ Push_Back
 		}	
 		i++;
 	}
 
-	sort(v.begin(), v.end(), cmp);
+	sort(v.begin(), v.end(), cmp); // ì¬ìƒíšŸìˆ˜ ì´í•© ë‚´ë¦¼ì°¨ìˆœ sort
 	for (int i = 0; i < v.size(); i++) {
 		for (int j = 0; j < v[i].second.size() && j < 2; j++) {
 			answer.push_back(v[i].second[j]);
