@@ -25,8 +25,10 @@ vector<int> solution(vector<string> genres, vector<int> plays) {
 		um[genres[i]].push_back(pair<int, int>(plays[i], i));		
 
 	unordered_map<string, vector<pair<int, int>>>::iterator it = um.begin();
+	
 	vector<pair<int, vector<int>>> v(um.size()); 
 	// vector<pair<int, vector<int>>> v; 벡터의 사이즈 지정 매우 중 요 이 것 때 문 에 런 타 임 *****
+	
 	int i = 0;
 	for (it; it != um.end(); it++) {
 		vector<pair<int, int>> temp = it->second;
