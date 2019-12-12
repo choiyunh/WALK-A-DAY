@@ -8,6 +8,7 @@ vector<int> solution(vector<int> progresses, vector<int> speeds) {
 	vector<int> answer;
 	vector<int> term;
 
+	// 각 기능개발에 걸리는 시간
 	for (int i = 0; i < progresses.size(); i++) {
 		if ((100 - progresses[i]) % speeds[i] != 0)
 			term.push_back(((100 - progresses[i]) / speeds[i]) + 1);
@@ -15,9 +16,11 @@ vector<int> solution(vector<int> progresses, vector<int> speeds) {
 			term.push_back(((100 - progresses[i]) / speeds[i]));
 	}
 
-	int day = term[0];
-	int release = 1;
+	// 첫 개발을 배포일로 잡고
+	int day = term[0];	
+	int release = 1; // 배포 시점에 몇가지 기능을 배포하는지
 	for (int i = 1; i < term.size(); i++) {
+		// 
 		if (term[i] <= day)
 			release++;
 		else {
