@@ -18,7 +18,7 @@ int solution(vector<int> priorities, int location) {
 	
 	int count = 0;
 	while (1) {
-		if (q.front().second == pq.top()) { // �μ�
+		if (q.front().second == pq.top()) { // ÀÎ¼â
 			if (q.front().first == location) {
 				count++;
 				break;
@@ -33,7 +33,6 @@ int solution(vector<int> priorities, int location) {
 		}
 	}
 	answer = count;
-
 	return answer;
 }
 
