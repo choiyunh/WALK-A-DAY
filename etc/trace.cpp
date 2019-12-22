@@ -20,16 +20,15 @@ void Trace::put(string f, string s) {
 	str[count] = s;
 	count++;
 }
-
 void Trace::print(string p = "") {
 	if (p == "") {
-		cout << "-----¸ğµç Trace Á¤º¸¸¦ Ãâ·ÂÇÕ´Ï´Ù. ------" << endl;
+		cout << "-----ëª¨ë“  Trace ì •ë³´ë¥¼ ì¶œë ¥í•©ë‹ˆë‹¤. ------" << endl;
 		for (int i = 0; i < count; i++) {
 			cout << func[i] << ":" << str[i] << endl;
 		}
 	}
 	else {
-		cout << "----- " << p << "ÅÂ±×ÀÇ Trace Á¤º¸¸¦ Ãâ·ÂÇÕ´Ï´Ù. -----" << endl;
+		cout << "----- " << p << "íƒœê·¸ì˜ Trace ì •ë³´ë¥¼ ì¶œë ¥í•©ë‹ˆë‹¤. -----" << endl;
 		for (int i = 0; i < count; i++) {
 			if (func[i] == "f()")
 				cout << func[i] << ":" << str[i] << endl;
@@ -39,18 +38,18 @@ void Trace::print(string p = "") {
 
 void f() {
 	int a, b, c;
-	cout << "µÎ °³ÀÇ Á¤¼ö¸¦ ÀÔ·ÂÇÏ¼¼¿ä>>";
+	cout << "ë‘ ê°œì˜ ì •ìˆ˜ë¥¼ ì…ë ¥í•˜ì„¸ìš”>>";
 	cin >> a >> b;
-	Trace::put("f()", "Á¤¼ö¸¦ ÀÔ·Â ¹Ş¾ÒÀ½");
+	Trace::put("f()", "ì •ìˆ˜ë¥¼ ì…ë ¥ ë°›ì•˜ìŒ");
 	c = a + b;
-	Trace::put("f()", "ÇÕ °è»ê");
-	cout << "ÇÕÀº " << c << endl;
+	Trace::put("f()", "í•© ê³„ì‚°");
+	cout << "í•©ì€ " << c << endl;
 }
 
 int main() {
-	Trace::put("main()", "ÇÁ·Î±×·¥ ½ÃÀÛÇÕ´Ï´Ù.");
+	Trace::put("main()", "í”„ë¡œê·¸ë¨ ì‹œì‘í•©ë‹ˆë‹¤.");
 	f();
-	Trace::put("main()", "Á¾·á");
+	Trace::put("main()", "ì¢…ë£Œ");
 	Trace::print("f()");
 	Trace::print();
 }
