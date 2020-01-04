@@ -48,7 +48,6 @@ vector<int> solution(vector<string> genres, vector<int> plays) {
 			//printf("%d\n", v[i].second[j]);
 		}		
 	}
-	
 	return answer;
 }
 
