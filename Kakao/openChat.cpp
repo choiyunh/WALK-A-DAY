@@ -18,16 +18,15 @@ vector<string> solution(vector<string> record) {
 
 		if (command == "Enter") {
 			user[id] = name;
-			event.push_back(pair<string, string>(id, "´ÔÀÌ µé¾î¿Ô½À´Ï´Ù."));
+			event.push_back(pair<string, string>(id, "ë‹˜ì´ ë“¤ì–´ì™”ìŠµë‹ˆë‹¤."));
 		}
 		else if (command == "Leave") {
-			event.push_back(pair<string, string>(id, "´ÔÀÌ ³ª°¬½À´Ï´Ù."));
+			event.push_back(pair<string, string>(id, "ë‹˜ì´ ë‚˜ê°”ìŠµë‹ˆë‹¤."));
 		}
 		else {
 			user[id] = name;
 		}
 	}
-
 	for (int i = 0; i < event.size(); i++) {
 		answer.push_back(user[event[i].first] + event[i].second);
 	}
