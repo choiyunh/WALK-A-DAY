@@ -11,7 +11,12 @@ int solution(string skill, vector<string> skill_trees) {
 	// 있으면 skill에서 B보다 앞에있는 문자가 B 뒤애 있는지 찾아
 	// 있으면 불가능 없으면 통과
 	// 끝까지 통과하면 count++;
-	
+	for (int i = 0; i < skill_trees.size(); i++) {
+		string temp = skill_trees[i];
+		for (int j = 0; j < temp.size(); j++) {
+			char c = temp[j];
+		}
+	}
 	return answer;
 }
 
