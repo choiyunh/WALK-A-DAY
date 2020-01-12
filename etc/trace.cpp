@@ -35,7 +35,6 @@ void Trace::print(string p = "") {
 		}
 	}
 }
-
 void f() {
 	int a, b, c;
 	cout << "두 개의 정수를 입력하세요>>";
