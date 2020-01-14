@@ -31,7 +31,6 @@
 //
 //	if (result < 10)
 //		cout << '0';
-//
 //	cout << result << endl;
 //
 //	return 0;
