@@ -61,6 +61,7 @@ void Maze::generateMaze()
 			}
 		}
 	}
+
 }
 
 Point Maze::getStartPoint() const //시작점으로 돌아가기.
@@ -84,6 +85,26 @@ bool Maze::isGoal(const Point & point) const
 	if (point.getX() < 0 || point.getX() >= HEIGHT || point.getY() < 0 || point.getY() >= WIDTH)
 	{
 		return false;
+	}
+	for (int x = 0; x < HEIGHT; x++)
+	{
+		for (int y = 0; y < WIDTH; y++)
+		{
+			// 외곽에 도착점 및 시작점 세팅
+			if ((x == 0 || x == HEIGHT - 1 || y == 0 || y == WIDTH - 1) && map[x][y] == Cell::SPACE)
+			{
+				if (isStart == 0)
+				{
+					map[x][y] = Cell::GOAL;
+					isStart = 1 - isStart;
+				}
+				else
+				{
+					startPoint = Point(x, y);
+					isStart = 1 - isStart;
+				}
+			}
+		}
 	}
 	return map[point.getX()][point.getY()] == Cell::GOAL;
 }
