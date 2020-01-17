@@ -14,7 +14,6 @@ void quick_sort(int i, int j) {
 	while (left <= right) {
 		while (arr[left] < pivot)left++;
 		while (arr[right] > pivot) right--;
-
 		if (left <= right) {
 			std::swap(arr[left], arr[right]);
 			left++;
