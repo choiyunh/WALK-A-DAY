@@ -1,6 +1,5 @@
 #include <iostream>
 #include <algorithm>
-
 //quick sort
 
 int arr[1000000];
