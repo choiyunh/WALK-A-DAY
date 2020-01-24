@@ -7,6 +7,7 @@ int dp(int N) {
 	if (N == 2) return 2;
 	if (d[N] != 0) return d[N];
 	return d[N] = (dp(N - 1) + dp(N - 2)) % 15746;
+	
 }
 
 int main() {
