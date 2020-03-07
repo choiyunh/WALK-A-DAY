@@ -6,7 +6,7 @@
 
 using namespace std;
 
-bool compare(vector<int> a, vector<int> b) {
+bool compare(vector<int> a, vector<int> b) { // 요청시간 오름차순 (요청시간 같으면 소요시간 오름차순)
 	if (a[0] == b[0])
 		return a[1] < b[1];
 	else
@@ -14,8 +14,8 @@ bool compare(vector<int> a, vector<int> b) {
 }
 
 struct cmp {
-	bool operator()(vector<int> a, vector<int> b) {
-		if (a[1] == b[1])
+	bool operator()(vector<int> a, vector<int> b) { // greater라서 원래는 내림차순이지만 pq에쓰면 오름차순
+		if (a[1] == b[1])							// 소요시간 오름차순 (소요시간 같으면 요청시간 오름차순)
 			return a[0] > b[0];
 		else
 			return a[1] > b[1];
@@ -23,8 +23,8 @@ struct cmp {
 };
 
 int solution(vector<vector<int>> jobs) {
-	int answer = 0;
-	int total = 0;
+	int answer = 0; // 요청부터 종료까지 걸린 시간의 합
+	int total = 0; // 총 흐른 시간이고
 	int num = jobs.size();
 	sort(jobs.begin(), jobs.end(), compare); // jobs 요청시간 오름차순 정렬
 	priority_queue<vector<int>,vector<vector<int>>,cmp> pq; // 소요시간 오름차순 우선순위 큐(해야 될 일 쌓임)
