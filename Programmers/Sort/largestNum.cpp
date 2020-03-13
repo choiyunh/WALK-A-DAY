@@ -4,7 +4,7 @@
 
 using namespace std;
 
-bool cmp(string a, string b) {
+bool cmp(string a, string b) { // 큰 순서로 
 	return a + b > b + a;
 }
 string solution(vector<int> numbers) {
