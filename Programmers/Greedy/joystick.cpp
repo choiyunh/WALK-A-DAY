@@ -10,12 +10,13 @@ using namespace std;
 
 int solution(string name) {
 	int answer = 0;
-	// NÀº ¾ÕÀ¸·Îµç µÚ·Îµç 13¹ø ÀÌµ¿
-	// N ÀÌÀüÀº ´ÙÀ½ ¾ËÆÄºª NÀÌÈÄ´Â ÀÌÀü ¾ËÆÄºªÀ¸·Î Ã£¾Æ°¡´Â°Ô ³ªÀ½
-	vector<char> alpha = { 'A','B','C','D','E','F','G','H','I','J','K','L', // ±×³É ¾Æ½ºÅ°ÄÚµå·Î ÇÏ´Â°Ô ÆíÇÒ·Á³ª
+	// Nì€ ì•ìœ¼ë¡œë“  ë’¤ë¡œë“  13ë²ˆ ì´ë™
+	// N ì´ì „ì€ ë‹¤ìŒ ì•ŒíŒŒë²³ Nì´í›„ëŠ” ì´ì „ ì•ŒíŒŒë²³ìœ¼ë¡œ ì°¾ì•„ê°€ëŠ”ê²Œ ë‚˜ìŒ
+	vector<char> alpha = { 'A','B','C','D','E','F','G','H','I','J','K','L', // ê·¸ëƒ¥ ì•„ìŠ¤í‚¤ì½”ë“œë¡œ í•˜ëŠ”ê²Œ í¸í• ë ¤ë‚˜
 	   'M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z' };
-	vector<bool> check(name.length(), false); // ÇØ´ç À§Ä¡¸¦ ¹Ù²ã¾ßÇÏ´ÂÁö Ã¼Å©
-	int cus = 0; // Ä¿¼­ÀÇ À§Ä¡
+	
+	vector<bool> check(name.length(), false); // í•´ë‹¹ ìœ„ì¹˜ë¥¼ ë°”ê¿”ì•¼í•˜ëŠ”ì§€ ì²´í¬
+	int cus = 0; // ì»¤ì„œì˜ ìœ„ì¹˜
 	int i = 1;
 	int j = 0;
 	int cnt = 0;
@@ -27,11 +28,11 @@ int solution(string name) {
 		}
 	}
 
-	// Ã¹ ¹øÂ° À§Ä¡ ¾ËÆÄºªºÎÅÍ ¹Ù²Ù°í ½ÃÀÛ
+	// ì²« ë²ˆì§¸ ìœ„ì¹˜ ì•ŒíŒŒë²³ë¶€í„° ë°”ê¾¸ê³  ì‹œì‘
 	if (!check[cus]) {
 		for (j = 0; j < alpha.size(); j++) {
 			if (name[cus] == alpha[j]) {
-				if (name[cus] > 'N') {// Nº¸´Ù Å« ¾ËÆÄºªÀº µÚ·Î ÀÌµ¿
+				if (name[cus] > 'N') {// Në³´ë‹¤ í° ì•ŒíŒŒë²³ì€ ë’¤ë¡œ ì´ë™
 					j = alpha.size() - j;
 				}
 				break;
@@ -46,9 +47,9 @@ int solution(string name) {
 	j = 0;
 	while (cnt < name.length()) {
 		int right, left;
-		right = cus + i; // ¿ìÃøÀ¸·Î i¸¸Å­¾¿ ÀÌµ¿
-		left = cus - i; // ÁÂÃøÀ¸·Î i¸¸Å­¾¿ ÀÌµ¿
-		// ¹üÀ§¸¦ ³Ñ¾î°¡¸é
+		right = cus + i; // ìš°ì¸¡ìœ¼ë¡œ ië§Œí¼ì”© ì´ë™
+		left = cus - i; // ì¢Œì¸¡ìœ¼ë¡œ ië§Œí¼ì”© ì´ë™
+		// ë²”ìœ„ë¥¼ ë„˜ì–´ê°€ë©´
 		if (right >= name.length())
 			right -= name.length();
 		if (left < 0)
@@ -57,10 +58,10 @@ int solution(string name) {
 		if (!check[right]) {
 			answer += i;
 			cus = right;
-			i = 1; // Ä¿¼­ ÀÌµ¿ÇÏ¸é ´Ù½Ã ÁÂ¿ì·Î ÇÑÄ­¾¿ °Ë»çÇØ¾ß µÇ¹Ç·Î
+			i = 1; // ì»¤ì„œ ì´ë™í•˜ë©´ ë‹¤ì‹œ ì¢Œìš°ë¡œ í•œì¹¸ì”© ê²€ì‚¬í•´ì•¼ ë˜ë¯€ë¡œ
 			for (j = 0; j < alpha.size(); j++) {
 				if (name[cus] == alpha[j]) {
-					if (name[cus] > 'N') {// Nº¸´Ù Å« ¾ËÆÄºªÀº µÚ·Î ÀÌµ¿
+					if (name[cus] > 'N') {// Në³´ë‹¤ í° ì•ŒíŒŒë²³ì€ ë’¤ë¡œ ì´ë™
 						j = alpha.size() - j;
 					}
 					break;
@@ -75,10 +76,10 @@ int solution(string name) {
 		else if (!check[left]) {
 			answer += i;
 			cus = left;
-			i = 1;  // Ä¿¼­ ÀÌµ¿ÇÏ¸é ´Ù½Ã ÁÂ¿ì·Î ÇÑÄ­¾¿ °Ë»çÇØ¾ß µÇ¹Ç·Î
+			i = 1;  // ì»¤ì„œ ì´ë™í•˜ë©´ ë‹¤ì‹œ ì¢Œìš°ë¡œ í•œì¹¸ì”© ê²€ì‚¬í•´ì•¼ ë˜ë¯€ë¡œ
 			for (j = 0; j < alpha.size(); j++) {
 				if (name[cus] == alpha[j]) {
-					if (name[cus] > 'N') {// Nº¸´Ù Å« ¾ËÆÄºªÀº µÚ·Î ÀÌµ¿
+					if (name[cus] > 'N') {// Në³´ë‹¤ í° ì•ŒíŒŒë²³ì€ ë’¤ë¡œ ì´ë™
 						j = alpha.size() - j;
 					}
 					break;
@@ -90,7 +91,7 @@ int solution(string name) {
 			j = 0;
 			continue;
 		}
-		i++; // ÁÂ ¿ì·Î ÇÑÄ­¾¿ ´Ã·Á°¡¸ç °Ë»ç
+		i++; // ì¢Œ ìš°ë¡œ í•œì¹¸ì”© ëŠ˜ë ¤ê°€ë©° ê²€ì‚¬
 	}
 	return answer;
 }
