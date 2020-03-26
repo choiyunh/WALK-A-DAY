@@ -13,13 +13,11 @@ int main() {
 					im++;
 				im /= 2;
 			}
-
 			if (i == kim) {
 				if (kim % 2 == 1)
 					kim++;
 				kim /= 2;
 			}
-
 			if (i == N && N % 2 != 0)
 				N++;
 		}
