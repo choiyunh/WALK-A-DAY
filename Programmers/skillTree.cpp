@@ -5,14 +5,14 @@ using namespace std;
 
 int solution(string skill, vector<string> skill_trees) {
 	int answer = 0;
-	// "BACDE" ¿¡¼­ B¸¦ ¹Ş¾Æ¿È
-	// skill¿¡¼­ B¸¦ Ã£¾Æ
-	// ¾øÀ¸¸é ±×³É Åë°ú ÀÎµ¦½º°¡ 0ÀÌ¾îµµ Åë°ú
-	// ÀÖÀ¸¸é skill¿¡¼­ Bº¸´Ù ¾Õ¿¡ÀÖ´Â ¹®ÀÚ°¡ skill_trees[i]ÀÇ B µÚ¿¡ ÀÖ´ÂÁö Ã£¾Æ
-	// ÀÖÀ¸¸é ºÒ°¡´É ¾øÀ¸¸é Åë°ú
-	// ³¡±îÁö Åë°úÇÏ¸é count++;
+	// "BACDE" ì—ì„œ Bë¥¼ ë°›ì•„ì˜´
+	// skillì—ì„œ Bë¥¼ ì°¾ì•„
+	// ì—†ìœ¼ë©´ ê·¸ëƒ¥ í†µê³¼ ì¸ë±ìŠ¤ê°€ 0ì´ì–´ë„ í†µê³¼
+	// ìˆìœ¼ë©´ skillì—ì„œ Bë³´ë‹¤ ì•ì—ìˆëŠ” ë¬¸ìê°€ skill_trees[i]ì˜ B ë’¤ì— ìˆëŠ”ì§€ ì°¾ì•„
+	// ìˆìœ¼ë©´ ë¶ˆê°€ëŠ¥ ì—†ìœ¼ë©´ í†µê³¼
+	// ëê¹Œì§€ í†µê³¼í•˜ë©´ count++;
 	for (int i = 0; i < skill_trees.size(); i++) {
-		string temp = skill_trees[i];
+		string temp = skill_trees[i+1];
 		for (int j = 0; j < temp.size(); j++) {
 			char c = temp[j];
 			if (skill[j] == c) {
