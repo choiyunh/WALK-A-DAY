@@ -1,0 +1,14 @@
+def solution(arr):
+    answer = []
+
+    temp = arr[0]
+    answer.append(temp)
+    for num in arr:
+        if temp == num:
+            continue
+        else:
+            answer.append(num)
+            temp = num
+    return answer
+
+print(solution([1,1,3,3,0,1,1]))
