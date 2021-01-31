@@ -25,11 +25,3 @@ string solution(vector<string> participant, vector<string> completion) {
 
 	return answer;
 }
-
-int main() {
-	vector<string> exPt = { "leo","kiki","eden" };
-	vector<string> exCo = { "eden","kiki" };
-
-	printf("%s\n", (solution(exPt, exCo)).c_str());
-	return 0;
-}
