@@ -22,3 +22,4 @@ def solution(clothes):
 print(solution([['yellow_hat', 'headgear'],
           ['blue_sunglasses', 'eyewear'],
           ['green_turban', 'headgear']]))
+
