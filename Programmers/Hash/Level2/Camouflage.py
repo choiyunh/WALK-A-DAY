@@ -9,7 +9,7 @@ def solution(clothes):
     #print(dic)
 
     # 2+1 * 1+1 = 3
-    # (yellow_hat, green_tur장ban, 0) (blue_sunglasses, 0)
+    # (yellow_hat, green_turban, 0) (blue_sunglasses, 0)
     # 3*2 = 6
     # 6 - 1
 
