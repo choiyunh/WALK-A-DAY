@@ -40,7 +40,7 @@ def solution(info, query):
                     if s == '-':
                         continue
                     else:
-                        for key in tempArr:
+                        for key in tempArr[:]:
                             if s not in key:
                                 tempArr.remove(key)
                 # print(tempArr)
