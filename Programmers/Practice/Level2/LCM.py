@@ -1,5 +1,7 @@
 def solution(arr):
     n = 1
+    
+    arr.sort()
     while True:
         temp = arr[-1] * n
         n += 1
