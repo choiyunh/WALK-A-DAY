@@ -20,7 +20,4 @@ def solution(nums):
     return answer
 
 
-# 5C3 -> 5*4*3*2*1/3*2*1 * 1/2
-
-
 print(solution([1, 2, 7, 6, 4]))
