@@ -1,15 +1,15 @@
 def solution(n, words):
-    spoken_words = []
+    wordList = []
     for item in range(len(words)):
-        if not spoken_words:
-            spoken_words.append(words[item])
+        if not wordList:
+            wordList.append(words[item])
         else:
-            if words[item] in spoken_words:
+            if words[item] in wordList:
                 return [item % n + 1, item // n + 1]
-            elif spoken_words[item-1][-1:] != words[item][:1]:
+            elif wordList[item-1][-1:] != words[item][:1]:
                 return [item % n + 1, item // n + 1]
             else:
-                spoken_words.append(words[item])
+                wordList.append(words[item])
     return [0, 0]
 
 
