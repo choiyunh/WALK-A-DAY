@@ -10,16 +10,16 @@ bool checkNum(int i, string numbers);
 
 int solution(string numbers) {
 	int answer = 0;
-	sort(numbers.begin(), numbers.end(), greater<int>()); // ³»¸²Â÷¼ø Á¤·Ä
+	sort(numbers.begin(), numbers.end(), greater<int>()); // ë‚´ë¦¼ì°¨ìˆœ ì •ë ¬
 	int i_numbers = stoi(numbers);
 	vector<bool> temp(i_numbers + 1, true);
 
 	for (int i = 2; i <= i_numbers; i++) {
 		if (temp[i] == true) {
 			if (checkNum(i, numbers))
-				answer++;			
+				answer++;
 			int j = i;
-			while (j <= i_numbers) { // ¹è¼öµéÀ» ´Ù flase
+			while (j <= i_numbers) { // ë°°ìˆ˜ë“¤ì„ ë‹¤ flase
 				temp[j] = false;
 				j += i;
 			}
@@ -31,9 +31,9 @@ int solution(string numbers) {
 
 bool checkNum(int i, string numbers) {
 	int flag = 0;
-	// numbers 71 , i 11 ÀÏ ¶§..
+	// numbers 71 , i 11 ì¼ ë•Œ..
 	while (i != 0) {
-		int tmp = i % 10; // ¼ýÀÚ ÇÏ³ª¾¿
+		int tmp = i % 10; // ìˆ«ìž í•˜ë‚˜ì”©
 		flag = 0;
 		for (int j = 0; j < numbers.size(); j++) {
 			if (numbers[j] - '0' == tmp) {
@@ -42,17 +42,9 @@ bool checkNum(int i, string numbers) {
 				break;
 			}
 		}
-		if (flag == 0) // flag°¡ 0À¸·Î ³ª¿Â ¼ø°£ return
+		if (flag == 0) // flagê°€ 0ìœ¼ë¡œ ë‚˜ì˜¨ ìˆœê°„ return
 			return false;
-		i /= 10; 
+		i /= 10;
 	}
 	return true;
-}
-
-int main() {
-	string n = "011";
-	vector<bool> temp(13);
-	printf("%d\n", solution(n));
-
-	return 0;
 }
