@@ -1,6 +1,4 @@
 def solution(str1, str2):
-    str1 = str1.upper()
-    str2 = str2.upper()
     rst1, rst2 = [], []
 
     for s, part in zip(str1, str1[1:]):
@@ -15,8 +13,7 @@ def solution(str1, str2):
 
     realUnion = set(rst1 + rst2)
     lenInter, lenUnion = 0, 0
-    # print(rst1, rst2)
-    # print(realUnion)
+
     for r in realUnion:
         if r in rst1 and r in rst2:
             lenInter += min(rst1.count(r), rst2.count(r))
