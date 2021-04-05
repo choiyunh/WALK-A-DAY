@@ -1,19 +1,29 @@
 def solution(m, n, board):
     answer = 0
-    print(board[5])
     newBoard = []
-    for i in range(m):
-        b = list(board[i])
-        newBoard.append(b)
 
-    boom = set()
-    for i in range(1, m):
-        for j in range(1, n):
-            if board[i - 1][j - 1] == board[i - 1][j] == board[i][j - 1] == board[i][j]:
-                boom |= {(i, j), (i - 1, j - 1), (i - 1, j), (i, j - 1)}
-    print(boom)
+    for i in range(n):
+        temp = []
+        for j in range(m - 1, -1, -1):
+            temp.append(board[j][i])
+        newBoard.append(temp)
 
+    while True:
+        boom = set()
+        for i in range(1, n):
+            for j in range(1, m):
+                if newBoard[i - 1][j - 1] == newBoard[i - 1][j] == newBoard[i][j - 1] == newBoard[i][j] != -1:
+                    boom |= {(i, j), (i - 1, j - 1), (i - 1, j), (i, j - 1)}
+        if not boom:
+            break
+        for i, j in boom:
+            newBoard[i][j] = 0
+        for i in range(n):
+            newBoard[i] = [item for item in newBoard[i] if item != 0]
+            for k in range(m - len(newBoard[i])):
+                newBoard[i].append(-1)
+                answer += 1
     return answer
 
 
-print(solution(6, 6, ["TTTANT", "RRFACC", "RRRFCC", "TRRRAA", "TTMMMF", "TMMTTJ"]))
+print(solution(4, 5, ["CCBDE", "AAADE", "AAABF", "CCBBF"]))
