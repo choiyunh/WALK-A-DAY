@@ -16,14 +16,11 @@ def solution(relation):
         for i in range(len(combiList)):
             combiList[i] = set(combiList[i])
 
-        print(combiList)
-        print(candiKey)
         for ck in candiKey:
             for ix in range(len(combiList)):
                 if len(ck & combiList[ix]) == len(ck):
-                    print('교', ck & combiList[ix])
                     combiList[ix] = set()
-        print(combiList)
+
         for cl in combiList:
             temp = set()
             for r in range(row):
@@ -31,7 +28,6 @@ def solution(relation):
                 for cc in cl:
                     key.append(relation[r][cc])
                 temp.add(tuple(key))
-            print(temp)
             if len(temp) == row:
                 candiKey.append(cl)
                 answer += 1
