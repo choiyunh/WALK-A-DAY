@@ -18,7 +18,7 @@ def solution(relation):
 
         for ck in candiKey:
             for ix in range(len(combiList)):
-                if len(ck & combiList[ix]) == len(ck):
+                if ck & combiList[ix] == ck:
                     combiList[ix] = set()
 
         for cl in combiList:
