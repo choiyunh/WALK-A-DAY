@@ -6,33 +6,33 @@ using namespace std;
 
 int solution(int n, vector<int> lost, vector<int> reserve) {
 	int answer = n;
-	int cnt = 0; // Ã¼À°º¹À» µµ³­ ´çÇßÁö¸¸ ¼ö¾÷À» µéÀ» ¼ö ÀÖ´Â ¼ö
+	int cnt = 0; // ì²´ìœ¡ë³µì„ ë„ë‚œ ë‹¹í–ˆì§€ë§Œ ìˆ˜ì—…ì„ ë“¤ì„ ìˆ˜ ìˆëŠ” ìˆ˜
 	int lostNum = lost.size();
 
-	// µµ³­´çÇßÁö¸¸ ¾Èºô·Áµµ µÇ´Â »ç¶÷À» ¸ÕÀú Ã¼Å©ÇØ¼­
-	// lost¿Í rserve¹è¿­¿¡¼­ Á¦°Å
+	// ë„ë‚œë‹¹í–ˆì§€ë§Œ ì•ˆë¹Œë ¤ë„ ë˜ëŠ” ì‚¬ëŒì„ ë¨¼ì € ì²´í¬í•´ì„œ
+	// lostì™€ rserveë°°ì—´ì—ì„œ ì œê±°
 	for (int i = 0; i < lost.size(); i++) {
 		for (int j = 0; j < reserve.size(); j++) {
 			if (lost[i] == reserve[j]) {
 				lost.erase(lost.begin() + i);
 				reserve.erase(reserve.begin() + j);
 				cnt++;
-				i--; // lost.earse ÇßÀ¸¹Ç·Î i--
+				i--; // lost.earse í–ˆìœ¼ë¯€ë¡œ i--
 				break;
 			}
 		}
 	}
-	// ´Ù¸¥ »ç¶÷¿¡°Ô ºô·Á¾ß ÇÏ´Â »ç¶÷ Ã¼Å©
+	// ë‹¤ë¥¸ ì‚¬ëŒì—ê²Œ ë¹Œë ¤ì•¼ í•˜ëŠ” ì‚¬ëŒ ì²´í¬
 	for (int i = 0; i < lost.size(); i++) {
 		for (int j = 0; j < reserve.size(); j++) {
-			// ¾Õ »ç¶÷ºÎÅÍ Ã¼Å©( µŞ »ç¶÷Àº µŞµŞ»ç¶÷ÇÑÅ×µµ ºô·ÁÁÙ ¼ö ÀÖ±â ¶§¹®¿¡)
-			// ¾Õ¿¡¼­ ºô¸± ¼ö ÀÖÀ¸¸é ºô¸®°í break;
+			// ì• ì‚¬ëŒë¶€í„° ì²´í¬( ë’· ì‚¬ëŒì€ ë’·ë’·ì‚¬ëŒí•œí…Œë„ ë¹Œë ¤ì¤„ ìˆ˜ ìˆê¸° ë•Œë¬¸ì—)
+			// ì•ì—ì„œ ë¹Œë¦´ ìˆ˜ ìˆìœ¼ë©´ ë¹Œë¦¬ê³  break;
 			if (reserve[j] == lost[i] - 1) {
 				cnt++;
 				reserve.erase(reserve.begin() + j);
 				break;
 			}
-			// ¾Õ »ç¶÷ÇÑÅ× ¸ø ºô¸®¸é µŞ»ç¶÷ÇÑÅ× ºô¸®±â
+			// ì• ì‚¬ëŒí•œí…Œ ëª» ë¹Œë¦¬ë©´ ë’·ì‚¬ëŒí•œí…Œ ë¹Œë¦¬ê¸°
 			if (reserve[j] == lost[i] + 1) {
 				cnt++;
 				reserve.erase(reserve.begin() + j);
