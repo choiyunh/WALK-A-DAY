@@ -10,49 +10,42 @@ bool cmp(vector<int> a, vector<int> b) {
 
 int solution(int n, vector<vector<int>> costs) {
 	int answer = 0;
-	// check ¹è¿­À» ¸¸µé¾î¼­ ¹æ¹® °¡´É Ã¼Å©
-	// 0 1ÀÌ ¿¬°áµÇ¾úÀ» ¶§ 2°¡ 0ÀÌ³ª 1 µÑ Áß ÇÑ°÷ÀÌ¶û¸¸ ¿¬°áµÉ ¶§ ´Ù¸® °Ç¼³
-	// ºñ¿ë ±âÁØÀ¸·Î ¿À¸§Â÷¼ø Á¤·ÄÇØ¼­ ºñ¿ë ÀûÀº °ÍºÎÅÍ °Ë»ç
+	// check ë°°ì—´ì„ ë§Œë“¤ì–´ì„œ ë°©ë¬¸ ê°€ëŠ¥ ì²´í¬
+	// 0 1ì´ ì—°ê²°ë˜ì—ˆì„ ë•Œ 2ê°€ 0ì´ë‚˜ 1 ë‘˜ ì¤‘ í•œê³³ì´ëž‘ë§Œ ì—°ê²°ë  ë•Œ ë‹¤ë¦¬ ê±´ì„¤
+	// ë¹„ìš© ê¸°ì¤€ìœ¼ë¡œ ì˜¤ë¦„ì°¨ìˆœ ì •ë ¬í•´ì„œ ë¹„ìš© ì ì€ ê²ƒë¶€í„° ê²€ì‚¬
 	vector<bool> check(4, false);
 	vector<bool> pass(costs.size(), false);
 	sort(costs.begin(), costs.end(), cmp);
 	int cnt = 0;
-	
-	// Á¦ÀÏ ºñ¿ë ÀûÀº Ã¹¹øÂ° ´Ù¸® °Ç¼³ÇÏ°í ½ÃÀÛ
+
+	// ì œì¼ ë¹„ìš© ì ì€ ì²«ë²ˆì§¸ ë‹¤ë¦¬ ê±´ì„¤í•˜ê³  ì‹œìž‘
 	check[costs[0][0]] = true;
 	check[costs[0][1]] = true;
 	pass[0] = true;
 	answer += costs[0][2];
 	cnt += 2;
 
-	// cnt -> ¹æ¹®°¡´ÉÇÑ ¼¶ÀÇ °¹¼ö
+	// cnt -> ë°©ë¬¸ê°€ëŠ¥í•œ ì„¬ì˜ ê°¯ìˆ˜
 	while (cnt < n) {
 		for (int i = 1; i < costs.size(); i++) {
 			if (pass[i]) continue;
 
 			if (!check[costs[i][0]] && check[costs[i][1]]) {
 				check[costs[i][0]] = true;
-				pass[i] = true; // ÇØ´ç costÀÇ ¼¶ µÎ°³´Â µÑ ´Ù ¹æ¹® °¡´ÉÇØÁö¹Ç·Î
+				pass[i] = true; // í•´ë‹¹ costì˜ ì„¬ ë‘ê°œëŠ” ë‘˜ë‹¤ ë°©ë¬¸ ê°€ëŠ¥ì´ë¯€ë¡œ íŒ¨ìŠ¤~
 				cnt++;
 				answer += costs[i][2];
-				break; // ´Ù¸® °Ç¼³ÇßÀ¸¸é ´Ù½Ã Ã³À½ºÎÅÍ Ã¼Å©
+				break; // ë‹¤ë¦¬ ê±´ì„¤í–ˆìœ¼ë©´ ë‹¤ì‹œ ì²˜ìŒë¶€í„° ì²´í¬
 			}
 			else if (check[costs[i][0]] && !check[costs[i][1]]) {
 				check[costs[i][1]] = true;
-				pass[i] = true; // ÇØ´ç costÀÇ ¼¶ µÎ°³´Â µÑ´Ù ¹æ¹® °¡´ÉÇØÁö¹Ç·Î
+				pass[i] = true; // í•´ë‹¹ costì˜ ì„¬ ë‘ê°œëŠ” ë‘˜ë‹¤ ë°©ë¬¸ ê°€ëŠ¥ì´ë¯€ë¡œ íŒ¨ìŠ¤~
 				cnt++;
 				answer += costs[i][2];
-				break; // ´Ù¸® °Ç¼³ÇßÀ¸¸é ´Ù½Ã Ã³À½ºÎÅÍ Ã¼Å©
+				break; // ë‹¤ë¦¬ ê±´ì„¤í–ˆìœ¼ë©´ ë‹¤ì‹œ ì²˜ìŒë¶€í„° ì²´í¬
 			}
-		}		
+		}
+
 	}
 	return answer;
-}
-
-int main() {
-	int n = 4;
-	vector<vector<int>> costs = { {0,1,1},{0,2,2},{1,2,5},{1,3,1},{2,3,8} };
-
-	printf("%d\n", solution(n, costs));
-	return 0;
 }
