@@ -13,5 +13,3 @@ def solution(progresses, speeds):
 
 
 print(solution([2, 2, 1, 2], [1, 1, 1, 1]))
-
-# 98 98 99 98
