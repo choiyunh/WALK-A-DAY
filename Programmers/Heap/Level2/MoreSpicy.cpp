@@ -8,22 +8,22 @@ using namespace std;
 
 int solution(vector<int> scoville, int K) {
 	int answer = 0;
-	priority_queue<int, vector<int>, greater<int>> pq; // MIN HEAP (¿À¸§Â÷¼ø)
+	priority_queue<int, vector<int>, greater<int>> pq; // MIN HEAP (ì˜¤ë¦„ì°¨ìˆœ)
 
-	for (int i : scoville) // MIN HEAP¿¡ ÀÚ·á »ğÀÔ
+	for (int i : scoville) // MIN HEAPì— ìë£Œ ì‚½ì…
 		pq.push(i);
 
-	while (pq.top() < K) { // pqÀÇ topÀÌ KÀÌ»óÀÌ¸é ³¡
-		if (pq.size() == 1) // À½½ÄÀ» ¼¯¾îµµ KÀÌ»óÀÌ ¾ÈµÉ ¶§
+	while (pq.top() < K) { // pqì˜ topì´ Kì´ìƒì´ë©´ ë
+		if (pq.size() == 1) // ìŒì‹ì„ ì„ì–´ë„ Kì´ìƒì´ ì•ˆë  ë•Œ
 			return -1;
-		// pqÀÇ topÀ» ¼ø¼­´ë·Î µÎ °³ ²¨³»¼­ (a+b*2)ÇØ¼­ ´Ù½Ã push
-		int a = pq.top(); 
+		// pqì˜ topì„ ìˆœì„œëŒ€ë¡œ ë‘ ê°œ êº¼ë‚´ì„œ (a+b*2)í•´ì„œ ë‹¤ì‹œ push
+		int a = pq.top();
 		pq.pop();
 		int b = pq.top();
 		pq.pop();
 
 		pq.push(a + (b * 2));
-		answer++; // ¼¯ÀºÈ½¼ö ++
+		answer++; // ì„ì€íšŸìˆ˜ ++
 	}
 	return answer;
 
