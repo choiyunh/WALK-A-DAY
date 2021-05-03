@@ -5,8 +5,8 @@ def solution(scoville, K):
     answer = 0
     hq = []
 
-    for i in scoville:
-        heapq.heappush(hq, i)
+    for s in scoville:
+        heapq.heappush(hq, s)
 
     while hq[0] < K:
         try:
@@ -16,5 +16,6 @@ def solution(scoville, K):
         answer += 1
 
     return answer
+
 
 print(solution([1, 2, 3, 9, 10, 12], 7))
