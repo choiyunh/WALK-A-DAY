@@ -13,10 +13,10 @@ int solution(int N, int number) {
 		return 1;
 	
 	dp[1].push_back(N);
-	for (int i = 2; i < 9; i++) {       // ÃÖ¼Ú°ªÀÌ 8º¸´Ù Å©¸é -1 return
-		if ((dp[i - 1][0] * 10 + N == number)) return i;      // ¼ıÀÚ ºÙÀÌ±â(5,55,555)
+	for (int i = 2; i < 9; i++) {       // ìµœì†Ÿê°’ì´ 8ë³´ë‹¤ í¬ë©´ -1 return
+		if ((dp[i - 1][0] * 10 + N == number)) return i;      // ìˆ«ì ë¶™ì´ê¸°(5,55,555)
 		else dp[i].push_back((N * 10) + N);
-		for (int j = 1; j < i; j++) {   // j ¿Í i-j
+		for (int j = 1; j < i; j++) {   // j ì™€ i-j
 			for (int k = 0; k < dp[j].size(); k++) {
 				for (int p = 0; p < dp[i - j].size(); p++) {
 					if (dp[j][k] + dp[i - j][p] == number) return i;
@@ -27,8 +27,8 @@ int solution(int N, int number) {
 
 					if (dp[j][k] * dp[i - j][p] == number) return i;
 					dp[i].push_back(dp[j][k] * dp[i - j][p]);
-					
-					if (dp[i - j][p] != 0) {  // ºĞ¸ğ°¡ 0ÀÌ ¾Æ´Ò ¶§
+
+					if (dp[i - j][p] != 0) {  // ë¶„ëª¨ê°€ 0ì´ ì•„ë‹ ë•Œ
 						if (dp[j][k] / dp[i - j][p] == number) return i;
 						else if (dp[j][k] / dp[i - j][p] == 0);
 						else dp[i].push_back(dp[j][k] / dp[i - j][p]);
