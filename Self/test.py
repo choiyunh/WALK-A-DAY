@@ -1,14 +1,19 @@
-def solution(n):
-    dic = {0: '짝', 1: '홀'}
+def solution(arr1, arr2):
+    #answer = [[0] * len(arr2)] * len(arr1)
+    #answer = [[0 for col in range(len(arr2[0]))] for row in range(len(arr1))]
 
-    print(dic[int(format(n, 'b')[-1])])
+    answer = [[0] * 2] * 3
+    print(answer)
+    answer[2][0] = 5
+
+    a=[0,0]
+    b=[]
+    b.append(a)
+    b.append(a)
+    b.append(a)
+    b[0][0]=5
+    print(b)
+    return answer
 
 
-def solution2(n):
-    dic = {0: 'F', 1: 'F', 2: 'F', 3: 'F', 4: 'F', 5: 'F', 6: 'D', 7: 'C', 8: 'B', 9: 'A'}
-
-    print(dic[n // 10])
-
-
-solution(10)
-solution2(70)
+print(solution([[1, 4], [3, 2], [4, 1]],[[3, 3], [3, 3]]))
