@@ -24,9 +24,11 @@ def solution(expression):
             if op[i] not in temp:
                 i += 1
                 continue
+
             ix = temp.index(op[i])
             a = int(temp[ix - 1])
             b = int(temp[ix + 1])
+
             if op[i] == '+':
                 temp[ix - 1] = str(a + b)
             elif op[i] == '-':
@@ -35,6 +37,7 @@ def solution(expression):
                 temp[ix - 1] = str(a * b)
             temp.pop(ix)
             temp.pop(ix)
+
         if int(temp[0]) < 0:
             rst.append(-int(temp[0]))
         else:
