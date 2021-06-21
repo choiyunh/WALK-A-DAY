@@ -1,11 +1,34 @@
 N = int(input())
-linkNum = int(input())
 
-graph = [[0] * (N + 1) for _ in range(N + 1)]
-visited = []
+graph = {}
+for _ in range(N - 1):
+    a, b = map(int, input().split())
+    if a in list(graph.keys()):
+        if b not in graph[a]:
+            graph[a].append(b)
+    else:
+        graph[a] = [b]
 
-for _ in range(linkNum):
-    a, b = input().split()
-    a, b = int(a), int(b)
-    graph[a][b], graph[b][a] = 1, 1
+    if b in list(graph.keys()):
+        if a not in graph[b]:
+            graph[b].append(a)
+    else:
+        graph[b] = [a]
 
+answer = [0] * (N + 1)
+stack = [1]
+
+print(graph)
+print(answer)
+
+p = -1
+while stack:
+    n = stack.pop()
+    if not answer[n]:
+        answer[n] = p
+        if n in graph:
+            temp = sorted(graph[n], reverse=True)
+            stack.extend(temp)
+
+print(graph)
+print(answer)
