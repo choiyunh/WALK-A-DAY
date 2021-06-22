@@ -32,3 +32,16 @@ while stack:
 
 print(graph)
 print(answer)
+
+def dfs(v):
+    stack = [v]
+    visited = []
+
+    while stack:
+        node = stack.pop()
+        if node not in visited:
+            visited.append(node)
+            if node in graph:
+                temp = sorted(graph[node], reverse=True)
+                stack.extend(temp)
+    return visited
