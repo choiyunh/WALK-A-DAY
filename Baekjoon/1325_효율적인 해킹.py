@@ -7,28 +7,11 @@ for _ in range(m):
     else:
         graph[a] = [b]
 
-print(graph)
-
-while stack:
-    n = stack.pop()
-    if not answer[n]:
-        answer[n] = p
-        if n in graph:
-            temp = sorted(graph[n], reverse=True)
-            stack.extend(temp)
-
-print(graph)
-print(answer)
 
 def dfs(v):
-    stack = [v]
-    visited = []
+    visited.append(v)
+    for i in range(1, N + 1):
+        if i not in visited and graph[v][i] == 1:
+            dfs(i)
 
-    while stack:
-        node = stack.pop()
-        if node not in visited:
-            visited.append(node)
-            if node in graph:
-                temp = sorted(graph[node], reverse=True)
-                stack.extend(temp)
-    return visited
+print(graph)
