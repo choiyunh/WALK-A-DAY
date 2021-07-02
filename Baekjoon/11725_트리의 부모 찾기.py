@@ -3,13 +3,13 @@ N = int(input())
 graph = {}
 for _ in range(N - 1):
     a, b = map(int, input().split())
-    if a in list(graph.keys()):
+    if a in graph:
         if b not in graph[a]:
             graph[a].append(b)
     else:
         graph[a] = [b]
 
-    if b in list(graph.keys()):
+    if b in graph:
         if a not in graph[b]:
             graph[b].append(a)
     else:
@@ -32,16 +32,3 @@ while stack:
 
 print(graph)
 print(answer)
-
-def dfs(v):
-    stack = [v]
-    visited = []
-
-    while stack:
-        node = stack.pop()
-        if node not in visited:
-            visited.append(node)
-            if node in graph:
-                temp = sorted(graph[node], reverse=True)
-                stack.extend(temp)
-    return visited
