@@ -18,17 +18,18 @@ for _ in range(N - 1):
 answer = [0] * (N + 1)
 stack = [1]
 
-print(graph)
-print(answer)
-
-p = -1
 while stack:
     n = stack.pop()
-    if not answer[n]:
-        answer[n] = p
-        if n in graph:
-            temp = sorted(graph[n], reverse=True)
-            stack.extend(temp)
+    if answer[n]:
+        continue
+    if n in graph:
+        if n == 1:
+            answer[n] = -1
+        else:
+            for v in graph[n]:
+                if answer[v]:
+                    answer[n] = v
+        temp = sorted(graph[n], reverse=True)
+        stack.extend(temp)
 
-print(graph)
-print(answer)
+print(*answer[2:], sep='\n')
