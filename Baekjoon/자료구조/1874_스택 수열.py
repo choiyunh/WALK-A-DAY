@@ -1,5 +1,3 @@
-import sys
-
 n = int(input())
 
 seq = []
@@ -8,12 +6,21 @@ for _ in range(n):
 
 stack = []
 
+answer = []
 num = 1
+cnt = 0
 for s in seq:
     while not stack or stack[-1] < s:
         stack.append(num)
         num += 1
-        print('+')
+        answer.append('+')
     while stack and stack[-1] >= s:
+        if stack[-1] == s:
+            cnt += 1
         stack.pop()
-        print('-')
+        answer.append('-')
+
+if cnt == n:
+    print(*answer, sep='\n')
+else:
+    print('NO')
