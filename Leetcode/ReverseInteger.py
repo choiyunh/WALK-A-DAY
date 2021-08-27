@@ -13,23 +13,18 @@ class Solution(object):
         :type x: int
         :rtype: int
         """
-        flag = True
+        flag = 1
 
         if x < 0:
-            flag = False
+            flag = -1
             x *= -1
-        cnt = len(str(x)) - 1
 
         answer = 0
-        while x:
-            answer += (x % 10) * (10 ** cnt)
-            x //= 10
-            cnt -= 1
+        while x != 0:
+            answer = answer * 10 + x % 10
 
-        if -2 ** 31 <= answer <= 2 ** 31 - 1:
-            if flag:
-                return answer
-            else:
-                return answer * -1
-        else:
-            return 0
+            if answer >= 2 ** 31:
+                return 0
+            x //= 10
+
+        return answer * flag
