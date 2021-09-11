@@ -2,15 +2,7 @@ import math
 
 
 class Solution:
-    def mySqrt(self, x):
-        """
-        :type x: int
-        :rtype: int
-        """
-
-        # approach: use binary search to find the largest int whose
-        #           square is less or equal than x
-
+    def mySqrt(self, x: int) -> int:
         left, right = 0, x
         while left <= right:
             mid = left + (right - left) // 2
