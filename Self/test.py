@@ -1,19 +1,26 @@
-def solution(arr1, arr2):
-    #answer = [[0] * len(arr2)] * len(arr1)
-    #answer = [[0 for col in range(len(arr2[0]))] for row in range(len(arr1))]
-
-    answer = [[0] * 2] * 3
-    print(answer)
-    answer[2][0] = 5
-
-    a=[0,0]
-    b=[]
-    b.append(a)
-    b.append(a)
-    b.append(a)
-    b[0][0]=5
-    print(b)
-    return answer
+from itertools import product
 
 
-print(solution([[1, 4], [3, 2], [4, 1]],[[3, 3], [3, 3]]))
+def productMatrix(A, B):
+    return [[sum(a * b for a, b in zip(A_row, B_col)) for B_col in zip(*B)] for A_row in A]
+
+
+dic = {'A': [[1, 0], [0, 1]],
+       '0': [[1, 0], [1, 1]],
+       '1': [[1, 1], [0, 1]]}
+
+data = input().split(';')
+X = [list(map(int, d.split())) for d in data]
+
+result = []
+ix = 1
+
+while result != X:
+    for i in product(['0', '1'], repeat=ix):
+        result = dic['A']
+        for j in i:
+            result = productMatrix(result, dic[j])
+        if result == X:
+            print(''.join(i))
+            break
+        ix += 1
