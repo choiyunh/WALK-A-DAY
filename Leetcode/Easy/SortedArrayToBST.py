@@ -8,19 +8,17 @@ class Solution:
     res = TreeNode()
 
     def sortedArrayToBST(self, nums: List[int]) -> Optional[TreeNode]:
-        low = 0
-        high = len(nums) - 1
+        if len(nums) == 0: return None
+        if len(nums) == 1:
+            return TreeNode(nums[0])
 
-        self.make(nums, low, high, self.res)
-        print(self.res)
+        mid = len(nums) // 2
+        root = TreeNode(nums[mid])
+        leftSub = nums[0:mid]
+        rightSub = nums[mid + 1:]
 
-    def make(self, nums, low, high, node):
-        mid = (low + high) // 2
-        node.val = nums[mid]
+        root.left = self.sortedArrayToBST(leftSub)
+        root.right = self.sortedArrayToBST(rightSub)
 
-        if mid == low:
-            print(high)
-            return
+        return root
 
-        self.make(nums, low, mid - 1, node.left)
-        self.make(nums, mid + 1, high, node.right)
