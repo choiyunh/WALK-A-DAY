@@ -4,9 +4,8 @@
 #         self.val = val
 #         self.left = left
 #         self.right = right
-class Solution:
-    res = TreeNode()
 
+class Solution:
     def sortedArrayToBST(self, nums: List[int]) -> Optional[TreeNode]:
         if len(nums) == 0: return None
         if len(nums) == 1:
