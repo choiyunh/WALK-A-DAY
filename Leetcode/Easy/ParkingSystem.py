@@ -27,3 +27,9 @@ class ParkingSystem(object):
             else:
                 self.medium -= 1
                 return True
+        elif carType == 3:
+            if self.small <= 0:
+                return False
+            else:
+                self.small -= 1
+                return True
