@@ -11,20 +11,20 @@ class Solution:
         if root is None:
             return []
 
-    rst, queue = [], [root]
+        rst, queue = [], [root]
 
-    while queue:
-        child, nodeVal = [], []
+        while queue:
+            child, nodeVal = [], []
 
-        for node in queue:
-            nodeVal.append(node.val)
+            for node in queue:
+                nodeVal.append(node.val)
 
-            if node.left:
-                child.append(node.left)
-            if node.right:
-                child.append(node.right)
+                if node.left:
+                    child.append(node.left)
+                if node.right:
+                    child.append(node.right)
 
-        rst.append(nodeVal)
-        queue = child
+            rst.append(nodeVal)
+            queue = child
 
-    return rst
+            return rst
