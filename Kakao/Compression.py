@@ -8,9 +8,6 @@ def solution(msg):
     i = 0
     msg += '-'
     while i < len(msg) - 1:
-        if i + 1 == len(msg):
-            answer.append(dic[msg[i]])
-            break
         j = 2
         w = msg[i:i + j]
         while w in dic:
