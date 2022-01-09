@@ -1,10 +1,9 @@
 package Leetcode.String.Medium;
 
 public class LongestPalindrome {
-    private static int index;
-    private static int maxLen;
+    int index, maxLen;
 
-    public static String solution(String s) {
+    public String solution(String s) {
         int len = s.length();
         if (len < 2) {
             return s;
@@ -18,7 +17,7 @@ public class LongestPalindrome {
 
     }
 
-    public static void find(String s, int i, int j) {
+    public void find(String s, int i, int j) {
         while (i >= 0 && j < s.length() && s.charAt(i) == s.charAt(j)) {
             i--;
             j++;
@@ -30,7 +29,9 @@ public class LongestPalindrome {
     }
 
     public static void main(String[] args) {
-        System.out.println((solution("babad")));
+        LongestPalindrome L = new LongestPalindrome();
+        System.out.println(L.solution("babad"));
+
     }
 
 }
