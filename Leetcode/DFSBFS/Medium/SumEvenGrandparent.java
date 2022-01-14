@@ -1,23 +1,7 @@
-package Leetcode.DFSBFS.Easy;
-
-class TreeNode {
-    int val;
-    TreeNode left;
-    TreeNode right;
-
-    TreeNode() {
-    }
-
-    TreeNode(int val) {
-        this.val = val;
-    }
-
-    TreeNode(int val, TreeNode left, TreeNode right) {
-        this.val = val;
-        this.left = left;
-        this.right = right;
-    }
-}
+/*
+22/01/14 LeetCode - 1315. Sum of Nodes with Even-Valued Grandparent
+ */
+package Leetcode.DFSBFS.Medium;
 
 public class SumEvenGrandparent {
     int sum = 0;
