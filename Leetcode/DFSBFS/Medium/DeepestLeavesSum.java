@@ -1,9 +1,7 @@
-package Leetcode.Tree.Medium;
-
-import com.sun.source.tree.Tree;
-
-import java.util.HashMap;
-import java.util.Stack;
+/*
+22/01/10 LeetCode - 1302. Deepest Leaves Sum
+ */
+package Leetcode.DFSBFS.Medium;
 
 // Definition for a binary tree node.
 class TreeNode {
