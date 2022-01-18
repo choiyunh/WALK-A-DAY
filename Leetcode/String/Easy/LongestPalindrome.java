@@ -16,16 +16,20 @@ class LongestPalindrome {
             if (i % 2 == 0) {
                 result += i;
             } else {
+                result += i - 1;
+
                 if (i > max) {
-                    result += (i - max);
                     max = i;
                 }
-
             }
 
         }
+
+        if (max != 0) {
+            result += 1;
+        }
+
         return result;
-        System.out.println();
     }
 
 
