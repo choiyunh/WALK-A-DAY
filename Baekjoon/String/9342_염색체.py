@@ -1,7 +1,13 @@
+import re
+
+regex = re.compile('^[A-F]{0,1}A+F+C+[A-F]{0,1}$')
+
 T = int(input())
 
 testCase = [input() for _ in range(T)]
 
 for tc in testCase:
-    if tc[0] in ['A','B','C','D','E','F']:
-        while 
+    if regex.match(tc):
+        print('Infected!')
+    else:
+        print('Good')
