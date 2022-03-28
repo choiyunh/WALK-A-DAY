@@ -9,9 +9,11 @@ for _ in range(m):
 
 
 def dfs(v):
+    visited = []
     visited.append(v)
-    for i in range(1, N + 1):
+    for i in range(1, n + 1):
         if i not in visited and graph[v][i] == 1:
             dfs(i)
+
 
 print(graph)
