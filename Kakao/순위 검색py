@@ -1,0 +1,37 @@
+from itertools import combinations
+from collections import defaultdict
+from bisect import bisect_left
+
+
+def solution(info, query):
+    dic = defaultdict(list)
+
+    for i in info:
+        i = i.split()
+        condition = i[:-1]
+        score = int(i[-1])
+        for idx in range(5):
+            combiIndex = list(combinations([0, 1, 2, 3], idx))
+            for ci in combiIndex:
+                tmp = condition[:]
+                for c in ci:
+                    tmp[c] = "-"
+                key = ''.join(tmp)
+                dic[key].append(score)
+
+    for v in dic.values():
+        v.sort()
+
+    answer = []
+    for q in query:
+        q = q.replace("and ", "").split()
+
+        targetCondition = "".join(q[:-1])
+        targetScore = int(q[-1])
+        count = 0
+
+        lst = dic.get(targetCondition, [])
+        count = len(lst) - bisect_left(lst, targetScore)
+        answer.append(count)
+
+    return answer
